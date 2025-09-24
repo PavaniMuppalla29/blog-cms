@@ -1,0 +1,110 @@
+### Register User
+POST http://localhost:4000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Regular User",
+  "email": "user@example.com",
+  "password": "123456",
+  "role": "user"
+}
+
+### Register Author
+POST http://localhost:4000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Author One",
+  "email": "author@example.com",
+  "password": "123456",
+  "role": "author"
+}
+
+### Register Admin
+POST http://localhost:4000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Admin Master",
+  "email": "admin@example.com",
+  "password": "123456",
+  "role": "admin"
+}
+
+### Login as User
+POST http://localhost:4000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "123456",
+  "role": "user"
+}
+
+### Login as Author
+POST http://localhost:4000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "author@example.com",
+  "password": "123456",
+  "role": "author"
+}
+
+### Login as Admin
+POST http://localhost:4000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "123456",
+  "role": "admin"
+}
+
+### Create a new blog
+POST http://localhost:4000/api/blog
+Content-Type: application/json
+
+{
+  "authorData": {
+    "name": "author1",
+    "email": "author1@gmail.com",
+    "profileImageUrl": "https://example.com/profile.jpg"
+  },
+  "articleId": 1001,
+  "title": "Understanding Async/Await in JavaScript",
+  "category": "JavaScript",
+  "content": "Async/Await makes asynchronous code look synchronous...",
+  "dateOfCreation": "2025-06-16T10:00:00.000Z",
+  "dateOfModification": "2025-06-16T10:00:00.000Z",
+  "isArticleActive": true,
+  "comments": []
+}
+
+###
+
+### Get all blogs
+GET http://localhost:4000/api/blog
+
+###
+
+### Get a specific blog by articleId
+GET http://localhost:4000/api/blog/1002
+
+###
+
+### Update a blog
+PUT http://localhost:4000/api/blog/1001
+Content-Type: application/json
+
+{
+  "title": "Understanding Promises in JavaScript",
+  "content": "Promises are the foundation of async programming...",
+  "category": "JavaScript",
+  "isArticleActive": true
+}
+
+###
+
+### Delete a blog
+DELETE http://localhost:4000/api/blog/1001
