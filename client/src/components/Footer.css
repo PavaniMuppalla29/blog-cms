@@ -1,0 +1,77 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+.footer {
+  background: #2c003e;
+  color: #f3e5f5;
+  padding: 3rem 2rem 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #e1bee7, #f8bbd0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer-description {
+  color: #d1c4e9;
+  max-width: 300px;
+  line-height: 1.6;
+}
+
+.footer-links h4,
+.footer-social h4 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #f3e5f5;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: #d1c4e9;
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #ce93d8;
+}
+
+.social-icons a {
+  color: #f3e5f5;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #ba68c8;
+  transform: scale(1.2);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #b39ddb;
+  border-top: 1px solid #452650;
+  padding-top: 1rem;
+}

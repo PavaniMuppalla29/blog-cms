@@ -1,0 +1,72 @@
+.user-dashboard {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+
+.user-dashboard h2 {
+  font-size: 2rem;
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.user-dashboard h3 {
+  font-size: 1.25rem;
+  text-align: center;
+  color: #34495e;
+  margin-bottom: 2rem;
+}
+
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  max-width: fit-content;
+  max-height: fit-content;
+  gap: 1.5rem;
+  margin: 0 auto;
+  padding: 1rem;
+    box-sizing: border-box;
+}
+
+.blog-card {
+  width: 100vw; /* full viewport width */
+  box-sizing: border-box;
+  background-color: #ffffff;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid #ddd;
+  transition: background-color 0.2s ease;
+}
+
+.blog-card:hover {
+  background-color: #f9f9f9;
+}
+
+
+.blog-title {
+  font-size: 1.4rem;
+  color: #2c3e50;
+  margin-bottom: 0.6rem;
+}
+
+
+.blog-card-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.blog-author {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  font-style: italic;
+  text-align: right;
+}
+
+.error,
+.no-blogs {
+  text-align: center;
+  color: #e74c3c;
+  font-size: 1rem;
+}

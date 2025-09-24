@@ -1,0 +1,63 @@
+.write-blog-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 12px;
+  background-color: #fdfdfd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.write-blog-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.write-blog-form h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.write-blog-form input,
+.write-blog-form textarea {
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.write-blog-form input:focus,
+.write-blog-form textarea:focus {
+  outline: none;
+  border-color: #0077cc;
+}
+
+.write-blog-form button {
+  background-color: #0077cc;
+  color: #fff;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.write-blog-form button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.write-blog-form button:hover:not(:disabled) {
+  background-color: #005fa3;
+}
+
+.message {
+  margin-top: 15px;
+  font-weight: 500;
+  text-align: center;
+  color: #006400;
+}
