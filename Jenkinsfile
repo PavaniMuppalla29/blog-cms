@@ -2,20 +2,20 @@ pipeline {
     agent any
 
     tools {
-        nodejs "NodeJS"   // Define NodeJS installation in Jenkins Global Tools (or skip if Node is already in PATH)
+        nodejs "NodeJS"  
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/your-username/your-mern-repo.git'
+                git branch: 'main', url: 'https://github.com/PavaniMuppalla29/blog-cms.git'
             }
         }
 
         stage('Install Client Dependencies') {
             steps {
                 dir('client') {
-                    sh 'npm install'
+                    bat 'npm install'
                 }
             }
         }
@@ -23,7 +23,7 @@ pipeline {
         stage('Build React App') {
             steps {
                 dir('client') {
-                    sh 'npm run build'
+                    bat 'npm run build'
                 }
             }
         }
@@ -31,7 +31,7 @@ pipeline {
         stage('Install Server Dependencies') {
             steps {
                 dir('server') {
-                    sh 'npm install'
+                    bat 'npm install'
                 }
             }
         }
@@ -39,7 +39,7 @@ pipeline {
         stage('Start Server') {
             steps {
                 dir('server') {
-                    sh 'npm start &'
+                    bat 'start /B node index.js'
                 }
             }
         }
