@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/PavaniMuppalla29/blog-cms'
+                git branch: 'main', url: 'https://github.com/PavaniMuppalla29/blog-cms'
             }
         }
 
@@ -35,7 +35,6 @@ pipeline {
         stage('Run Server') {
             steps {
                 dir('server') {
-                    // Run in background so Jenkins doesn’t hang
                     bat 'start /B node index.js'
                 }
             }
