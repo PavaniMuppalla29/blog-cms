@@ -1,42 +1,46 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs "NodeJS"   // Define NodeJS installation in Jenkins Global Tools (or skip if Node is already in PATH)
+    }
+
     stages {
-        stage('Checkout SCM') {
+        stage('Checkout') {
             steps {
-                checkout scm
+                git branch: 'main', url: 'https://github.com/your-username/your-mern-repo.git'
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Install Client Dependencies') {
             steps {
-                bat 'npm install'
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
-                script {
-                    // Only run test if package.json has a test script
-                    def packageJson = readFile('package.json')
-                    if (packageJson.contains('"test"')) {
-                        bat 'npm test'
-                    } else {
-                        echo "No test script found. Skipping tests."
-                    }
+                dir('client') {
+                    sh 'npm install'
                 }
             }
         }
 
         stage('Build React App') {
             steps {
-                bat 'npm run build'
+                dir('client') {
+                    sh 'npm run build'
+                }
             }
         }
 
-        stage('Deploy Locally') {
+        stage('Install Server Dependencies') {
             steps {
-                echo "Deployment steps here..."
+                dir('server') {
+                    sh 'npm install'
+                }
+            }
+        }
+
+        stage('Start Server') {
+            steps {
+                dir('server') {
+                    sh 'npm start &'
+                }
             }
         }
     }
