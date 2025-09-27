@@ -2,16 +2,32 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('Checkout SCM') {
             steps {
-                git branch: 'main', url: 'https://github.com/PavaniMuppalla29/blog-cms'
+                checkout scm
             }
         }
 
-        stage('Install Client Dependencies') {
+        stage('Install Dependencies') {
             steps {
                 dir('client') {
                     bat 'npm install'
+                }
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                dir('client') {
+                    script {
+                        // Only run test if package.json has a test script
+                        def packageJson = readFile('package.json')
+                        if (packageJson.contains('"test"')) {
+                            bat 'npm test'
+                        } else {
+                            echo "No test script found. Skipping tests."
+                        }
+                    }
                 }
             }
         }
@@ -24,19 +40,14 @@ pipeline {
             }
         }
 
-        stage('Install Server Dependencies') {
+        stage('Deploy Locally') {
             steps {
-                dir('server') {
-                    bat 'npm install'
-                }
-            }
-        }
-
-        stage('Run Server') {
-            steps {
-                dir('server') {
-                    bat 'start /B node index.js'
-                }
+                echo "Deployment steps here..."
+                // Example:
+                // bat '''
+                // if exist C:\\inetpub\\wwwroot rmdir /s /q C:\\inetpub\\wwwroot
+                // xcopy client\\build C:\\inetpub\\wwwroot /E /I /Y
+                // '''
             }
         }
     }
