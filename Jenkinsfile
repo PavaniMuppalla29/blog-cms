@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        CI = 'false'   // disables treating warnings as errors
+        CI = 'false'
     }
 
     stages {
@@ -14,18 +14,22 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'npm install'
+                dir('client') {          // 👈 change 'client' if your folder name is different
+                    bat 'npm install'
+                }
             }
         }
 
         stage('Run Tests') {
             steps {
-                script {
-                    def packageJson = readFile('package.json')
-                    if (packageJson.contains('"test"')) {
-                        bat 'npm test || echo "Tests failed but continuing..."'
-                    } else {
-                        echo "No test script found. Skipping tests."
+                dir('client') {
+                    script {
+                        def packageJson = readFile('package.json')
+                        if (packageJson.contains('"test"')) {
+                            bat 'npm test || echo "Tests failed but continuing..."'
+                        } else {
+                            echo "No test script found. Skipping tests."
+                        }
                     }
                 }
             }
@@ -33,9 +37,9 @@ pipeline {
 
         stage('Build React App') {
             steps {
-                echo "Building React app with warnings ignored..."
-                bat 'set CI=false && npm run build'
-                // or if using PowerShell: bat 'cmd /c "set CI=false && npm run build"'
+                dir('client') {
+                    bat 'set CI=false && npm run build'
+                }
             }
         }
 
