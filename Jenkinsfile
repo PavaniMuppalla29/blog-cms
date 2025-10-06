@@ -26,15 +26,19 @@ pipeline {
             }
         }
 
-        stage('Build React App') {
-            steps {
-                dir('client') {
-                    echo "Building React app (disabling eslint cache)..."
-                    // disable CI & eslint cache to prevent warning or permission errors
-                    bat 'set CI=false && set DISABLE_ESLINT_PLUGIN=true && npm run build'
-                }
-            }
+stage('Build React App') {
+    steps {
+        dir('client') {
+            echo "Building React app (CI=false, disabling eslint)..."
+            bat '''
+            set CI=false
+            set DISABLE_ESLINT_PLUGIN=true
+            call npm run build
+            '''
         }
+    }
+}
+
 
         stage('Deploy Locally') {
             steps {
