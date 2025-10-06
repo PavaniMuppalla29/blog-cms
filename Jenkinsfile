@@ -27,13 +27,13 @@ stage('Run Tests') {
 }
 
 
-        stage('Build React App') {
-            steps {
-                dir('client') {
-                    bat 'set CI=false && npm run build'
-                }
-            }
-        }
+stage('Build React App') {
+    steps {
+        echo "Building React app (disabling eslint cache)..."
+        bat 'set CI=false && npm run build -- --no-cache'
+    }
+}
+
 
         stage('Deploy Locally') {
             steps {
