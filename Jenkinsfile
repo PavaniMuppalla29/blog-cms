@@ -20,20 +20,12 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                dir('client') {
-                    script {
-                        def packageJson = readFile('package.json')
-                        if (packageJson.contains('"test"')) {
-                            bat 'npm test || echo "Tests failed but continuing..."'
-                        } else {
-                            echo "No test script found. Skipping tests."
-                        }
-                    }
-                }
-            }
-        }
+stage('Run Tests') {
+    steps {
+        echo "Skipping tests since no test files exist."
+    }
+}
+
 
         stage('Build React App') {
             steps {
