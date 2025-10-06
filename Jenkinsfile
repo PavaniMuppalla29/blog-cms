@@ -20,7 +20,7 @@ pipeline {
             steps {
                 dir('client') {
                     script {
-                        // Only run test if package.json has a test script
+                        // Only run test if package.json has a test script.
                         def packageJson = readFile('package.json')
                         if (packageJson.contains('"test"')) {
                             bat 'npm test'
