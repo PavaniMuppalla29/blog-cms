@@ -79,6 +79,7 @@ const Login = () => {
           <option value="user">User</option>
           <option value="author">Author</option>
           <option value="admin">Admin</option>
+          <option value="Manager">Manager</option>
         </select>
 
         <button type="submit" className="login-btn">
